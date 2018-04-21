@@ -37,4 +37,8 @@ public class Particular extends Cliente {
         frase = frase + "\n" + "Apellido: " + this.apellido;
         return frase;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 96156bdc438a17b9a692bb02d0da8a7db683b72d

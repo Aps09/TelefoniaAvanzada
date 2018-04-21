@@ -15,7 +15,13 @@ public class MenuPrincipal {
         if(almacen == null)
             almacen = new Almacen();
 
+<<<<<<< HEAD
+=======
+        Almacen almacen = new Almacen();
+>>>>>>> 96156bdc438a17b9a692bb02d0da8a7db683b72d
 
+
+        if(almacen == null) almacen = new Almacen();
 
         opcionesMenuPrincipal[] menu = values();
         int opc;
