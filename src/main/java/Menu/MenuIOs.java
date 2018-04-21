@@ -7,9 +7,6 @@ class MenuIOs {
 
     static Almacen main(Almacen almacen) {
 
-        String fichero = "Serializable.ficheroData";
-        gestionIOs gestion = new gestionIOs(almacen, fichero);
-
         opcionesIOs[] menu = opcionesIOs.values();
         Scanner scan = new Scanner(System.in);
         int opc;
@@ -28,17 +25,16 @@ class MenuIOs {
             switch (opc) {
                 case 1:
                     // Forzar Cargado
-                    almacen = gestion.CargadoDeDatos();
+                    almacen = gestionIOs.CargadoDeDatos();
 
-                break;
+                    break;
                 case 2:
                     // Forzar Guardado
-                    gestion.GuardadoDeDatos();
+                    gestionIOs.GuardadoDeDatos(almacen);
                     break;
             }
         } while (opc != 3);
 
-        //almacen = gestion.getAlmacen();
-        return almacen;
+    return almacen;
     }
 }

@@ -18,7 +18,7 @@ public class Factura implements Fechable, Serializable {
 
     public Factura(){
         this.codigo = -1;
-        this.tarifa = new Tarifa();
+        this.tarifa = null;
         this.fechaEmision = null;
         this.periodo = new Periodo();
         this.importe = -1;
@@ -71,7 +71,7 @@ public class Factura implements Fechable, Serializable {
     public String toString() {
 
         return "Código: "+ this.codigo + "\n"+
-                "Tarifa: "+ this.tarifa.getCantidad() + "€/min \n" +
+                "Tarifa: "+ this.tarifa.getPrecio() + "€/min \n" +
                 "Fecha: "+ this.getFecha().toString() + "\n" +
                 "Periodo: " + this.periodo.getInicio() + " - " + this.periodo.getFin() + "\n" +
                 "Importe: " + this.getImporte();

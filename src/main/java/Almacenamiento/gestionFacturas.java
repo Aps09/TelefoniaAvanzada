@@ -1,6 +1,7 @@
 package Almacenamiento;
 
 import Cliente.Cliente;
+import Excepciones.NoEncontrado;
 import Facturas.Factura;
 import Facturas.Periodo;
 import Fecha.Fecha;
@@ -8,7 +9,6 @@ import InterfazUsuario.datosFactura;
 import Llamadas.Llamada;
 
 import java.util.ArrayList;
-import Excepciones.NoEncontrado;
 
 public class gestionFacturas {
     private Almacen almacen;
@@ -40,7 +40,7 @@ public class gestionFacturas {
         // Calcular con las llamadas válidas
         double importe = 0;
         for(Llamada llamada : llamadas) {
-            importe += cliente.getTarifa().getCantidad() * llamada.getDuracion();
+            importe += cliente.getTarifa().getPrecio() * llamada.getDuracion();
         }
 
         // Crear factura

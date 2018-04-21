@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Fecha implements Comparable<Fecha>, Serializable {
 
+
     private int dia;
     private int mes;
     private int anyo;
@@ -32,4 +33,21 @@ public class Fecha implements Comparable<Fecha>, Serializable {
             else
                 return Integer.compare(this.dia, otro.dia);
     }
+
+
+    public int getDia() {
+        return dia;
+    }
+
+    public int getMes() {
+        return mes;
+    }
+
+    public int getAnyo() {
+        return anyo;
+    }
+
+
+
+
 }

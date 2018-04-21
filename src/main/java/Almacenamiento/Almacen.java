@@ -34,9 +34,11 @@ public class Almacen implements Serializable {
 
     public void addCliente(Cliente cliente){
         // Añadimos un cliente a la lista de clientes y en cada lista de facturas y llamadas
+
         clientes.add(cliente);
         facturas.put(cliente.getNIF(), new ArrayList<Factura>());
         llamadas.put(cliente.getNIF(), new ArrayList<Llamada>());
+
     }
 
     public void deleteCliente(String NIF){

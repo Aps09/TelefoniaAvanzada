@@ -5,6 +5,7 @@ public enum opcionesMenuPrincipal {
     Menu_Llamadas("Menu de llamadas"),
     Menu_Facturas("Menu de facturas"),
     Menu_IOS("Menu de copias de seguridad"),
+    Menu_Tarifas("Menú de Tarifas"),
     Salir("Salir");
 
     private String description;

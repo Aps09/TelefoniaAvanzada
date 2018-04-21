@@ -40,7 +40,7 @@ class MenuClientes {
                     break;
                 case 3:
                     // Cambiar tarifa de un cliente
-                    gestion.CambiarTarifa();
+                    gestion.CambiarTarifaBasica();
                     break;
                 case 4:
                     // Recoger datos de un cliente

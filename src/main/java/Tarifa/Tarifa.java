@@ -1,42 +1,31 @@
 package Tarifa;
+import Excepciones.NoEncontrado;
+import Llamadas.Llamada;
+
 import java.io.Serializable;
 
-public class Tarifa implements Serializable {
+public abstract class Tarifa implements Serializable {
 
-    private double cantidad;
+    private double precio;
 
-    //------------------------------------------------------------------
-    // CONSTRUCTORES
-    //------------------------------------------------------------------
-
-    public Tarifa(){
-        this.cantidad = 0;
+    public Tarifa(double precio){
+        this.precio = precio;
     }
 
-    public Tarifa(double cantidad){
-        this.cantidad = cantidad;
+    public double getPrecio(){
+        return precio;
     }
 
-    //------------------------------------------------------------------
-    // METODOS DE USO
-    //------------------------------------------------------------------
+    public double getPrecio(Llamada llamada) throws NoEncontrado {return precio;}
 
-
-
-
-
-    //------------------------------------------------------------------
-    // GETTERS
-    //------------------------------------------------------------------
-
-    public double getCantidad() {
-        return cantidad;
+    public void setPrecio(double precio){
+        this.precio = precio;
     }
 
+    public abstract boolean tarifaActiva(Llamada llamada) throws NoEncontrado;
 
-    //------------------------------------------------------------------
-    // SETTERS
-    //------------------------------------------------------------------
+
+
 
 
 }

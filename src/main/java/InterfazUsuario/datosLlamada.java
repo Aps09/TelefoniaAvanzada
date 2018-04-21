@@ -48,12 +48,21 @@ public class datosLlamada {
         System.out.print("Indique el año de la llamada: ");
         int anyo = Integer.parseInt(scan.nextLine());
 
+
         Fecha fecha = new Fecha(dia,mes,anyo);
         llamada.setFechaLlamada(fecha);
 
+
+        // Hora llamada
+        System.out.print("Indique la hora del inicio de la llamada: ");
+        int horaini = Integer.parseInt(scan.nextLine());
+
+        llamada.setHoraInicio(horaini);
+
+
         // Duración llamada
         System.out.print("Indique la duración de dicha llamada: ");
-        double dur = Double.parseDouble(scan.nextLine());
+        int dur = Integer.parseInt(scan.nextLine());
         if(dur <= 0) throw new IllegalArgumentException("La duración indicada de la llamada es invalida.");
         llamada.setDuracion(dur);
 

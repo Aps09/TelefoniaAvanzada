@@ -2,61 +2,75 @@ package InterfazUsuario;
 
 import Cliente.Cliente;
 import Cliente.Direccion;
+import Factoria.FabricaClientes;
+import Factoria.NuevosClientes;
 import Fecha.Fecha;
-import Tarifa.Tarifa;
+import Tarifa.TarifaBasica;
+
 import java.util.Scanner;
 
 public class datosCliente {
 
+    private static FabricaClientes fabrica = new NuevosClientes();
     private static Scanner scan = new Scanner(System.in);
 
-    // ----------------------------------------------------------
-    // METODOS DE USO
-    // ----------------------------------------------------------
+
 
     // ----------------------------------------------------------------------------
     // METODOS AÑADIR CLIENTE
     // ----------------------------------------------------------------------------
 
     public static Cliente addCliente() throws IllegalArgumentException{
-        Cliente cliente = new Cliente();
 
         System.out.println(" ");
+        System.out.print("Indique con el dígito indicado si se trata de un particular (1) o una empresa (2): ");
+        int opc = Integer.parseInt(scan.nextLine());
+
+        Cliente cliente;
+
+
+        if (opc == 1){
+            System.out.print("Indique el apellido del cliente: ");
+            String apellido = scan.nextLine();
+            cliente = fabrica.getParticular(apellido);
+        }else
+            cliente = fabrica.getEmpresa();
 
         // Nombre
         System.out.print("Indique el nombre del cliente: ");
         cliente.setNombre(scan.nextLine());
 
+
         // NIF
         System.out.print("Indique el NIF del cliente: ");
         String nif = scan.nextLine();
 
-        // Comprobamos que el NIF sea correcto
+
+             // Comprobamos que el NIF sea correcto
         if(nif.length() != 9)
             throw new IllegalArgumentException("El NIF indicado es incorrecto, debe contener 7 cifras y 1 carácter identificatorio.");
 
         cliente.setNIF(nif);
+
 
         // Direccion
         Direccion dir;
 
         System.out.print("Indique la provincia en la que habita el cliente: ");
         String provincia = scan.nextLine();
-
         System.out.print("Indique la calle donde vive el cliente: ");
         String calle = scan.nextLine();
-
         System.out.print("Indique el número del portal del cliente: ");
         int num = Integer.parseInt(scan.nextLine());
-
         System.out.print("Indique el piso donde vive el cliente: ");
         int piso = Integer.parseInt(scan.nextLine());
-
         System.out.print("Indique la puerta donde vive el cliente: ");
         String puerta = scan.nextLine();
 
         dir = new Direccion(provincia,calle,num,piso,puerta);
         cliente.setDireccion(dir);
+
+
 
         // Correo
         System.out.print("Indique el correo del cliente: ");
@@ -76,11 +90,13 @@ public class datosCliente {
         cliente.setFecha(fecha);
 
         // Tarifa
-        System.out.print("Indique la cantidad que paga con la tarifa actual: ");
-        double tarifa = Double.parseDouble(scan.nextLine());
-        cliente.setTarifa(new Tarifa(tarifa));
+        System.out.print("Indique la cantidad que paga con la tarifa básica actual: ");
+        double precio = Double.parseDouble(scan.nextLine());
+        cliente.setTarifa(new TarifaBasica(precio));
 
         return cliente;
+
+
     }
 
     // ----------------------------------------------------------------------------
@@ -135,7 +151,7 @@ public class datosCliente {
     public static double getCantTarifa(){
 
         // CANTIDAD
-        System.out.print("Indique la cantidad con la que quiere actualizar la tarifa: ");
+        System.out.print("Indique la cantidad con la que quiere actualizar la tarifa básica: ");
         return Double.parseDouble(scan.nextLine());
     }
 

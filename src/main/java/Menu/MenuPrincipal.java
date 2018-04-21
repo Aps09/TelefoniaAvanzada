@@ -11,17 +11,16 @@ public class MenuPrincipal {
 
     public static void main (String[] args) throws NoEncontrado {
 
+        Almacen almacen = gestionIOs.CargadoDeDatos();
+        if(almacen == null)
+            almacen = new Almacen();
 
-        Almacen almacen;
-        almacen = new Almacen();
 
-        // Cargado inmediato
-        String fichero = "Serializable.ficheroData";
-        gestionIOs gestion = new gestionIOs(almacen, fichero);
-        almacen = gestion.CargadoDeDatos();
 
         opcionesMenuPrincipal[] menu = values();
         int opc;
+
+
         Scanner scan = new Scanner(System.in);
 
         do {
@@ -33,7 +32,7 @@ public class MenuPrincipal {
             System.out.print("Elija una opción: ");
             opc = scan.nextInt();
 
-            if(opc >= 6 || opc <= 0) throw new IllegalArgumentException("La opción seleccionada no corresponde con ningún menú.");
+            if(opc >= 7 || opc <= 0) throw new IllegalArgumentException("La opción seleccionada no corresponde con ningún menú.");
             switch (opc){
                 case 1:
                     //MENU DE CLIENTES
@@ -52,12 +51,18 @@ public class MenuPrincipal {
                     //MENU IN/OUTPUT
                     almacen = MenuIOs.main(almacen);
                     break;
+
+                case 5:
+                //MENU IN/OUTPUT
+                    almacen = MenuTarifa.main(almacen);
+                    break;
+
             }
 
-        }while (opc != 5);
+        }while (opc != 6);
 
         // Guardado inmediato
-        gestion.GuardadoDeDatos();
+        gestionIOs.GuardadoDeDatos(almacen);
 
 
     }

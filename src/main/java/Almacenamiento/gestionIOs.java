@@ -5,39 +5,21 @@ import Serializable.LectorAlmacen;
 
 public class gestionIOs {
 
-    private Almacen almacen;
-    private String fichero;
-
-    //------------------------------------------------------------------
-    // CONSTRUCTORES
-    //------------------------------------------------------------------
-
-
-    public gestionIOs (Almacen almacen, String fichero){
-        this.almacen = almacen;
-        this.fichero = fichero;
-    }
+    private static String FICHERO = "Serializable.ficheroData";
 
     //------------------------------------------------------------------
     // METODOS DE USO
     //------------------------------------------------------------------
 
-
-    public Almacen CargadoDeDatos(){
+    public static Almacen CargadoDeDatos(){
         LectorAlmacen lectura = new LectorAlmacen();
-        almacen = lectura.lee(fichero);
+        Almacen almacen = lectura.lee(FICHERO);
         return almacen;
     }
 
-    public void GuardadoDeDatos(){
+    public static void GuardadoDeDatos(Almacen almacen){
         EscritorAlmacen escritura = new EscritorAlmacen();
-        escritura.Escribe(this.almacen, this.fichero);
+        escritura.Escribe(almacen, FICHERO);
     }
-
-    public Almacen getAlmacen() {
-        return this.almacen;
-    }
-
-
 
 }

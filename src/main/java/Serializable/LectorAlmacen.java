@@ -1,6 +1,7 @@
 package Serializable;
 
 import Almacenamiento.Almacen;
+import Almacenamiento.gestionIOs;
 
 import java.io.*;
 
@@ -29,7 +30,9 @@ public class LectorAlmacen {
                     streamLecturaAlmacen.close();
             }
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+
+            almacen = new Almacen();
+            gestionIOs.GuardadoDeDatos(almacen);
         }
 
         return almacen;

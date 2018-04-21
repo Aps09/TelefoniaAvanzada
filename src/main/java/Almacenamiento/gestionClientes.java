@@ -4,7 +4,7 @@ import Excepciones.NoEncontrado;
 import Cliente.Cliente;
 import Fecha.Fecha;
 import InterfazUsuario.datosCliente;
-import Tarifa.Tarifa;
+import Tarifa.*;
 
 import java.util.ArrayList;
 
@@ -28,7 +28,11 @@ public class gestionClientes {
 
     public void addCliente(){
         // Llamamos a la interfaz donde se hacen las preguntas para crear el cliente y lo añadimos
-        Cliente cliente = datosCliente.addCliente();
+
+        Cliente cliente = datosCliente.addCliente(); // El cliente se crea bien
+
+
+
         this.almacen.addCliente(cliente);
     }
 
@@ -47,11 +51,11 @@ public class gestionClientes {
         System.out.print("\n");
     }
 
-    public void CambiarTarifa() throws NoEncontrado {
+    public void CambiarTarifaBasica() throws NoEncontrado {
         // Llamamos a la interfaz para que saque el NIF del cliente y la nueva cantidad
         String NIF = datosCliente.getNIFTarifa();
         double cant = datosCliente.getCantTarifa();
-        Tarifa tarifa = new Tarifa(cant);
+        Tarifa tarifa = new TarifaBasica(cant);
         // Recogemos al cliente y le cambiamos la tarifa
         Cliente cliente = this.almacen.getCliente(NIF);
         cliente.setTarifa(tarifa);
