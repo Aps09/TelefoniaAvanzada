@@ -12,13 +12,14 @@ public class MenuPrincipal {
     public static void main (String[] args) throws NoEncontrado {
 
 
-        Almacen almacen;
-        almacen = new Almacen();
+        Almacen almacen = new Almacen();
 
         // Cargado inmediato
         String fichero = "Serializable.ficheroData";
         gestionIOs gestion = new gestionIOs(almacen, fichero);
         almacen = gestion.CargadoDeDatos();
+
+        if(almacen == null) almacen = new Almacen();
 
         opcionesMenuPrincipal[] menu = values();
         int opc;
